@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <title>웹소켓으로 MQTT 브로커에 접속</title>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.2/mqttws31.min.js" type="text/javascript"></script>
+      <script src="mqttio.js" type="text/javascript"></script>
+  </head>
+  <body>
+        <h3>웹소켓으로 mqtt 메시지 수신</h3>
+        <hr> 	
+        <form id="connection-form">
+          <b class="ptag">라즈베리 IP : </b>
+          <input id="broker" type="text" name="broker" value=""><br>
+          <b class="ptag">포트 번호 :</b>
+          <input id="port" type="text" name="port" value="9001"><br>
+          <b>토픽 문자열 :</b>
+          <input id="topic" type="text" name="topic" value="letter"><br><br>
+          <input type="button" onclick="Start()" value="연결하기">
+          <input type="button" onclick="startDisconnect()" value="Disconnect">
+          <br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br>
+      <input id="empty" name="client" value="사용하지 말아주세요.">
+      </form>
+  </body>
+</html>

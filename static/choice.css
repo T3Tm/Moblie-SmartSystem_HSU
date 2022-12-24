@@ -1,0 +1,25 @@
+a:visited{
+  color:rgb(252, 175, 148);
+}
+a:hover{
+  color:greenyellow;
+}
+a:active{
+  color:black;
+}
+#middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -240px 0 0 -300px;
+  font-size:30px;
+  border : 3px solid rgb(252, 175, 148);
+  width:550px;
+  height:550px;
+  text-align:center;
+  
+  font-family:"궁서";
+}
+#lettermiddle{
+  vertical-align: middle;
+}

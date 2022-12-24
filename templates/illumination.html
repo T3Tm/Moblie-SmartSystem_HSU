@@ -1,0 +1,29 @@
+<!-- 조도 센서 작동하는 거 조절하는 곳 -->
+{% extends 'parent.html' %}
+{% block content%}
+{% if client != None%}
+  <script>
+    function refresh(){
+      client= new Paho.MQTT.Client("{{IP}}",Number({{port}}),"{{client}}");
+      //연결 끊겼을 때
+      client.onConnectionLost = onConnectionLost;
+      client.onMessageArrived = onMessageArrived;
+      // 메세지가 도착했을 때
+      client.connect({ // 연결 성공했을 때 함수 실행
+        onSuccess : onConnect,
+      });
+    }
+    function onConnect(){
+      isconnected=true;
+    }
+    refresh();
+  </script>
+{%endif%}
+<script src={{url_for('static',filename='illumination.js')}}></script>
+  <button onclick="startsensor()">조도 센서 측정</button>
+
+  <button onclick="stopsensor()">중단</button>
+  <a href={{url_for('choicepage')}}><button>뒤로 가기</button></a>
+  <hr>
+  <canvas id="canvas" width="600" height="400"></canvas>
+{% endblock  %}

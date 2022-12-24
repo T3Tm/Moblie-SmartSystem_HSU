@@ -1,0 +1,28 @@
+{% extends 'parent.html' %}
+{% block content%}
+{% if client != None%}
+  <script>
+    function refresh(){
+      client= new Paho.MQTT.Client("{{IP}}",Number({{port}}),"{{client}}");
+      //연결 끊겼을 때
+      client.onConnectionLost = onConnectionLost;
+      client.onMessageArrived = onMessageArrived;
+      // 메세지가 도착했을 때
+      client.connect({ // 연결 성공했을 때 함수 실행
+        onSuccess : onConnect,
+      });
+    }
+    function onConnect(){
+      isconnected=true;
+    }
+    refresh();
+  </script>
+{%endif%}
+<script src={{url_for('static',filename='cctv.js')}}></script>
+  <button onclick="mqtt_Camera()">카메라 작동 시작</button>
+    
+  <button onclick="mqtt_CameraOff()">카메라 작동 중지</button>
+  <a href={{url_for('choicepage')}}><button>뒤로 가기</button></a>
+  <hr>
+  <canvas title="영상 뜨는 곳" id="canvas" width="720" height="480"></canvas>
+{% endblock  %}

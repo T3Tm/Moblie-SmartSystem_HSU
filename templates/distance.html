@@ -1,0 +1,33 @@
+<!-- 초음파 센서 작동하는 거 조절하는 곳 -->
+{% extends 'parent.html' %}
+{% block content%}
+{% if client != None%}
+  <script>
+    function refresh(){
+      client= new Paho.MQTT.Client("{{IP}}",Number({{port}}),"{{client}}");
+      //연결 끊겼을 때
+      client.onConnectionLost = onConnectionLost;
+      client.onMessageArrived = onMessageArrived;
+      // 메세지가 도착했을 때
+      client.connect({ // 연결 성공했을 때 함수 실행
+        onSuccess : onConnect,
+      });
+    }
+    function onConnect(){
+      isconnected=true;
+    }
+    refresh();
+  </script>
+{%endif%}
+<script src={{url_for('static',filename='distance.js')}}></script>
+  <button onclick="startEntrance()">현관까지 거리측정</button>
+  <button onclick="stopEntrance()">현관 측정 중지</button>
+  <button onclick="startDoor()">문까지 거리측정</button>
+  <button onclick="stopDoor()">문 측정 중지</button>
+  <!--뒤로 가기 버튼-->
+  <a href={{url_for('choicepage')}}><button>뒤로 가기</button></a>
+  
+  <hr id="horizon">
+  <div id="distance">
+  </div>
+{%endblock%}

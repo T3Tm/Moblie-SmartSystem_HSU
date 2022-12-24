@@ -1,0 +1,32 @@
+{% extends 'parent.html' %}
+{% block content%}
+{% if client != None%}
+  <script>
+    function refresh(){
+      client= new Paho.MQTT.Client("{{IP}}",Number({{port}}),"{{client}}");
+      //연결 끊겼을 때
+      client.onConnectionLost = onConnectionLost;
+      client.onMessageArrived = onMessageArrived;
+      // 메세지가 도착했을 때
+      client.connect({ // 연결 성공했을 때 함수 실행
+        onSuccess : onConnect,
+      });
+    }
+    function onConnect(){
+      isconnected=true;
+    }
+    refresh();
+  </script>
+{%endif%}
+<link rel="stylesheet" href="{{url_for('static',filename='choice.css')}}">
+  <form action="/next">
+    <div id="middle">
+      <div id ="lettermiddle">
+        <a href={{url_for('distance')}} >1.거리 측정하기</a><br>
+        <a href={{url_for('cctv')}} >2.CCTV</a><br>
+        <a href={{url_for('illumination')}}>3.거실 불 확인하기</a><br>
+      </div>
+    </div>
+  </form>
+  
+{% endblock  %}

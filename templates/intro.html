@@ -1,0 +1,26 @@
+{% extends 'parent.html' %}
+{% block content%}
+<!-- 처음에는 로그인을 안 했기때문에 이렇게 띄워놓음-->
+<link rel="stylesheet" href="{{url_for('static',filename="intro.css")}}">
+<div id="wrap">
+    <div id="up">
+        <h3 id="title">Raspberry 연결 웹페이지</h3>
+    </div>
+    <br><br>
+    <div id="down">
+        <form id="connection-form" action="/choice" method="post">
+            <p class="ptag">라즈베리 IP : </p>
+            <input id="broker" type="text" name="broker" value=""><br>
+            <p class="ptag">포트 번호 :</p>
+            <input id="port" type="text" name="port" value="9001"><br>
+            <button onclick="Start()">연결하기</button>
+            <br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br>
+        <input id="empty" name="client" value="사용하지 말아주세요.">
+        </form>
+    </div>
+</div>
+{% endblock  %}

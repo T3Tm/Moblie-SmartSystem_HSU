@@ -1,0 +1,10 @@
+html{
+  background-color :antiquewhite
+}
+#disconnect{
+  border-radius: 30px;
+}
+
+#top{
+  border: 3px solid rgb(252, 175, 148);
+}
